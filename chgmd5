@@ -1,0 +1,19 @@
+from tkinter import *
+import hashlib
+
+
+def submit():
+    p.set((hashlib.md5(w.get().encode('utf-8')).hexdigest()))
+
+root = Tk()
+root.title("中国移动客户名MD5加密软件")
+frame = Frame(root)
+frame.grid(padx=80, pady=80)
+lab1 = Label(frame, text="客户名:").grid(row=0, column=0, padx=5, pady=5, sticky=W)
+w = StringVar()
+ent1 = Entry(frame, textvariable=w).grid(row=0, column=1, ipadx=45, sticky=W)
+lab2 = Label(frame, text="MD5加密后:").grid(row=1, column=0, padx=5, pady=5, sticky=W)
+p = StringVar()
+ent2 = Entry(frame, textvariable=p).grid(row=1, column=1, ipadx=45, sticky=W)
+button = Button(frame, text="加密", command=submit, default='active').grid(row=2, column=1, ipadx=25)
+root.mainloop()
